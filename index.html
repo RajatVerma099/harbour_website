@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .app-bar {
+            background-color: #000;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 40px 40px / 0 0  40px 0px; 
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .about-app {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 5px rgba(140, 160, 199, 0.2);
+            text-align: center;
+            margin: 20px auto;
+            max-width: 80%;
+            color: #333;
+        }
+
+        .about-app p {
+            margin-bottom: 15px;
+        }
+
+        .custom-section {
+            display: flex;
+            max-width: 80%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #000;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Add curved edges */
+            border-radius: 55px;
+        }
+
+        .text-section p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .download-button {
+            background-color: #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .download-button:hover {
+            background-color: #555;
+        }
+
+        .carousel-container {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 30%;
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            max-height: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 3px 5px rgba(140, 160, 199, 0.2);
+        }
+
+        .video-section {
+            margin-top: 20px;
+            max-width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px; /* Decreased size of the video frame */
+            height: 300px; /* Set a preferred height for the video */
+            border-radius: 10px;
+            box-shadow: 0px 3px 5px rgba(140, 160, 199, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-bar">
+        <h1>Harbour</h1>
+    </div>
+
+    <div class="about-app">
+        <p>About Harbour :</p>
+        <p>Harbour is an off-campus job providing app with essential features to study and prepare for the Indian IT industry. It includes a resume builder and much more.</p>
+    </div>
+
+    <div class="custom-section">
+        <div class="text-section">
+            <p>Your support means the world to us. Show some love by downloading Harbour! Every download counts, and your share is priceless. Thank you for being part of our journey :)</p>
+            <a href="YOUR_DOWNLOAD_LINK_LEFT" class="download-button" target="_blank" rel="noopener noreferrer">Download Now (Left)</a>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-inner" id="carousel">
+                <!-- Images will be loaded dynamically using JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Having trouble while installing ?</h2>
+        <iframe src="https://drive.google.com/file/d/1y5Mf0IMH-sYLooxic7mBfYEtRHzAtDvV/preview" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const images = [
+            'https://drive.google.com/thumbnail?id=1IQCZz3WyRM76wz9vJHy6Ph1eOnVFSjB2&sz=w1000',
+            'https://drive.google.com/thumbnail?id=1o2w0QDS6cL6M5TlkOn9MPKvBAV1ZnFtY&sz=w1000',
+            'https://drive.google.com/thumbnail?id=1V04QEsanSzvjcuY_bWe0srhSS84zk-fz&sz=w1000',
+            'https://drive.google.com/thumbnail?id=1YgpgXKJJzAPU___nRRWMROT7tCmw1PLD&sz=w1000',
+            'https://drive.google.com/thumbnail?id=1fBs2rmuhaKGblnvPXqM2qZypVDljLOfI&sz=w1000',
+            'https://drive.google.com/thumbnail?id=1VEtvFLTX3oOrMm8FDDPQ3aiufID8MiCF&sz=w1000',
+            'https://drive.google.com/thumbnail?id=1b7GnwmRvcO7Vq6V3TqgmEgtyhvgXgRNW&sz=w1000',
+        ];
+
+        const carouselInner = document.getElementById('carousel');
+
+        images.forEach(image => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = 'Carousel Image';
+
+            const item = document.createElement('div');
+            item.classList.add('carousel-item');
+            item.appendChild(img);
+
+            carouselInner.appendChild(item);
+        });
+
+        let currentIndex = 0;
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            carouselInner.style.transform = `translateX(-${currentIndex * (100 / images.length)}%)`;
+        }, 3000); // Change image every 3 seconds
+    </script>
+</body>
+</html>
