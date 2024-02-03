@@ -22,6 +22,30 @@
             margin-bottom: 20px;
         }
 
+        .carousel-container {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 30%;
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            max-height: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 3px 5px rgba(140, 160, 199, 0.2);
+        }
+
         .about-app {
             background-color: #fff;
             padding: 20px;
@@ -31,10 +55,6 @@
             margin: 20px auto;
             max-width: 80%;
             color: #333;
-        }
-
-        .about-app p {
-            margin-bottom: 15px;
         }
 
         .custom-section {
@@ -82,30 +102,6 @@
             background-color: #555;
         }
 
-        .carousel-container {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item {
-            min-width: 30%;
-            box-sizing: border-box;
-            margin: 0 10px;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            max-height: 500px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0px 3px 5px rgba(140, 160, 199, 0.2);
-        }
-
         .video-section {
             margin-top: 20px;
             max-width: 80%;
@@ -128,6 +124,12 @@
         <h1>Harbour</h1>
     </div>
 
+    <div class="carousel-container">
+        <div class="carousel-inner" id="carousel">
+            <!-- Images will be loaded dynamically using JavaScript -->
+        </div>
+    </div>
+
     <div class="about-app">
         <p>About Harbour :</p>
         <p>Harbour is an off-campus job providing app with essential features to study and prepare for the Indian IT industry. It includes a resume builder and much more.</p>
@@ -138,16 +140,10 @@
             <p>Your support means the world to us. Show some love by downloading Harbour! Every download counts, and your share is priceless. Thank you for being part of our journey :)</p>
             <a href="YOUR_DOWNLOAD_LINK_LEFT" class="download-button" target="_blank" rel="noopener noreferrer">Download Now (Left)</a>
         </div>
-
-        <div class="carousel-container">
-            <div class="carousel-inner" id="carousel">
-                <!-- Images will be loaded dynamically using JavaScript -->
-            </div>
-        </div>
     </div>
 
     <div class="video-section">
-        <h2>Having trouble while installing ?</h2>
+        <h2>Having trouble while installing?</h2>
         <iframe src="https://drive.google.com/file/d/1y5Mf0IMH-sYLooxic7mBfYEtRHzAtDvV/preview" allowfullscreen></iframe>
     </div>
 
